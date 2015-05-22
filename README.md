@@ -73,6 +73,4 @@ demo示例解决的问题：
 
 
 访问：
-	http://127.0.0.1:8080/coupon-list.html?debug=true (开发&调试)
-	
-	http://127.0.0.1:8080/coupon-list.html (发布)
+	http://127.0.0.1:8080/coupon-list.html?debug=true (开发&调试)http://127.0.0.1:8080/coupon-list.html (发布)
