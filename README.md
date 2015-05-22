@@ -60,7 +60,7 @@ fis+angularjs+seajs
      	
 	2、执行fis release -op 发布到当前目录后 js、images、css为压缩打包版文件
         
-        3、src/js/business/widget下的angularjs+bootstrap-ui+jquery+seajs+sea-config合并成lib.js
+        3、src/js/business/widget下angularjs+bootstrap-ui+jquery+seajs+sea-config合并成lib.js
         
         4、src/css/common/下的所有css文件合并成common.css文件
 
