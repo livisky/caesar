@@ -1,0 +1,16 @@
+<div class="modal-container">
+	<a href="javascript:;" class="cls-btn" ng-click="cancel()"><img alt="关闭" width="36" height="36" src="images/common/x.png"></a>
+	<div class="tab-contents">
+		<form name="form" novalidate ng-submit="ok()">
+			<input id="qty" name="qty" type="text" hik-placeholder="请输入优惠券导出数量" ng-model="vm.count" required ng-pattern="/^[1-9][0-9]*$/" hik-val-range="1-{{vm.item.number}}">
+			<span class="err-msg ng-hide" ng-show="form.qty.$invalid">
+				<span ng-show="form.qty.$error.required">必填项</span>
+				<span ng-show="form.qty.$error.pattern">大于0的数字</span>
+				<span ng-show="form.qty.$error.range">范围须在1--{{vm.item.number}}</span>
+			</span>
+			<div class="cmd-wrap">
+				<input class="ok-btn" type="submit" value="确认">
+			</div>
+		</form>
+	</div>
+<div>

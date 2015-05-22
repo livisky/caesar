@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF8">
+		<title>萤石店铺后台管理系统 - 优惠券</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<link href="css/common.css" rel="stylesheet">
+		<link href="css/marketing/marketing.css" rel="stylesheet">
+		<script src="js/lib.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="header" ng-include src="'header.html'"></div>
+			<div class="hr"></div>
+			<div class="body">
+				<div class="sidebar" ng-include src="'nav.html'"></div>
+				<div class="content">
+					<h3>优惠券</h3>
+					<form name="couponForm" novalidate ng-controller="couponController" ng-submit="submit()">
+						<div class="r">
+							<strong>*</strong>
+							<label for="name" class="title">优惠券名称</label>
+							<input id="name" type="text" autofocus="true" name="name" ng-model="model.name" ng-focus required ng-minlength="5" ng-maxlength="50">
+							<span class="err-msg ng-hide" ng-show="couponForm.name.$invalid && ((couponForm.name.$dirty && !couponForm.name.$focused) || couponForm.submitted)">
+								<span ng-show="couponForm.name.$error.required">必填项</span>
+								<span ng-show="couponForm.name.$error.maxlength">最大字符数不能超过50</span>
+								<span ng-show="couponForm.name.$error.minlength">最小字符数不能少于5</span>
+							</span>
+						</div>
+						<div class="r">
+							<strong>*</strong>
+							<label for="type" class="title">优惠类型</label>
+							<select id="type" name="type" ng-model="model.type">
+								<option value="1">商品优惠</option>
+								<option value="2" selected>订单优惠</option>
+							</select>
+						</div>
+						<div class="r">
+							<strong>*</strong>
+							<label for="timeScope" class="title">活动时间</label>
+							
+							<input id="fromDate" type="text" name="fromDate" hik-placeholder="开始日期" ng-focus required ng-model="model.fromDate" ng-pattern="/^(19|20)\d\d([- /.])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])$/">
+							<input id="toDate" type="text" name="toDate" hik-placeholder="结束日期" ng-focus required ng-model="model.toDate" ng-pattern="/^(19|20)\d\d([- /.])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])$/"  hik-val-daterange="fromDate">
+							<span class="err-msg ng-hide" ng-show="couponForm.fromDate.$invalid && ((couponForm.fromDate.$dirty && !couponForm.fromDate.$focused) || couponForm.submitted)">
+								<span ng-show="couponForm.fromDate.$error.required">必填</span>
+								<span ng-show="couponForm.fromDate.$error.pattern">请输入正确的开始日期，如2015/02/08</span>
+							</span>
+							<span class="err-msg ng-hide" ng-show="couponForm.toDate.$invalid && ((couponForm.toDate.$dirty && !couponForm.toDate.$focused) || couponForm.submitted)">
+								<span ng-show="couponForm.toDate.$error.required">必填</span>
+								<span ng-show="couponForm.toDate.$error.pattern">请输入正确的结束时间，如2015/03/08</span>
+							</span>
+							<span class="err-msg ng-hide" ng-show="couponForm.toDate.$error.daterange && ((couponForm.toDate.$dirty && !couponForm.toDate.$focused) || couponForm.submitted)">
+								<span>结束日期必须晚于开始日期</span>
+							</span>
+						</div>
+						<div class="r">
+							<strong>*</strong>
+							<label class="title">活动对象</label>
+							<label>
+								<input type="checkbox" name="targets" ng-model="model.targes.member">普通会员</label>
+							<label>
+								<input type="checkbox" name="targets" ng-model="model.targets.guest">非会员</label>
+						</div>
+						<div class="r" ng-if="model.type==2">
+							<strong>*</strong>
+							<label for="targetComs" class="title">活动货品</label>
+							<select id="targetComs" name="targetComs" ng-model="model.targetComs">
+								<option value="1">所有货品</option>
+								<option value="2" selected>指定货品</option>
+							</select>
+							<label id="excl-com">
+								<input type="checkbox" name="exclude-com" ng-model="model.excludeCom">排除指定商品</label>
+							<div>
+								<div class="highlight ng-hide" ng-show="model.excludeCom">以下货品不在本次全场活动范围之内</div>
+								<ul class="ng-hide selected-coms" ng-show="model.selectedComs.length > 0">
+									<li ng-repeat="com in model.selectedComs">{{com.name}}
+										<a href="javascript:;" role="button" ng-click="deleteCom(com)">x</a>
+									</li>
+								</ul>
+								<a href="javascript:;" class="new link-btn" ng-click="addCom()">添加商品</a>
+							</div>
+						</div>
+						<div class="r" ng-if="model.type==1">
+							<strong>*</strong>
+							<label class="title">活动货品</label>
+							<ul class="ng-hide selected-coms" ng-show="model.selectedGoods.length > 0">
+								<li ng-repeat="com in model.selectedGoods">{{com.name}}
+									<a href="javascript:;" role="button" ng-click="deleteGoods(com)">x</a>
+								</li>
+							</ul>
+							<a href="javascript:;" class="round-btn" ng-click="addGoods()">请选择活动商品</a>
+						</div>
+						<div class="r" ng-if="model.type==2">
+							<strong>*</strong>
+							<label for="rule" class="title">活动规则</label>
+							<select id="rule" name="rule" ng-model="model.rule">
+								<option value="1">所有订单</option>
+								<option value="2" selected>指定订单</option>
+							</select>
+							<div class="rule-row" ng-if="model.rule==2">
+								<div>
+									<label>
+										<input type="checkbox" name="meetQuota" checked ng-model="model.meetQuota">订单额满</label>
+									<input type="text" id="quota" name="quota" class="num" hik-placeholder="请输入单笔订单额度" ng-focus ng-model="model.quota" ng-disabled="!model.meetQuota" hik-val-quota>
+									<span class="unit">元</span>
+									<span class="err-msg ng-hide" ng-show="couponForm.quota.$invalid && ((couponForm.quota.$dirty && !couponForm.quota.$focused) || couponForm.submitted)">
+										<span ng-show="couponForm.quota.$error.quota">请输入正确的数量</span>
+									</span>
+								</div>
+								<div>
+									<label>
+										<input type="checkbox" name="meetAddress" checked ng-model="model.meetAddress">收货地址</label>
+									<ul>
+										<li class="space" ng-repeat="address in model.addresses">
+											<select dynamic-name="address.pName" ng-model="address.pValue" ng-disabled="!model.meetAddress" ng-options="p as p for p in metadata.provinces" hik-val-address></select>
+											<select dynamic-name="address.cName" ng-model="address.cValue" ng-disabled="!model.meetAddress" ng-options="c as c for c in metadata.pcMapping[address.pValue]"></select>
+											<span class="err-msg ng-hide" ng-show="couponForm[address.pName].$invalid && ((couponForm[address.pName].$dirty && !couponForm[address.pName].$focused) || couponForm.submitted)">
+												<span>请选择省</span>
+											</span>
+										</li>
+									</ul>
+									<div>
+										<a href="javascript:;" class="round-btn address-btn" ng-click="addAddr()" ng-disabled="!model.meetAddress">+</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="r">
+							<strong>*</strong>
+							<label for="discountType" class="title">优惠结果</label>
+							<select id="discountType" name="discountType" ng-model="model.discountType" hik-val-range="1">
+								<option value="0">请选择优惠类型</option>
+								<option value="1">订单现金优惠</option>
+								<option value="2">订单折扣优惠</option>
+								<option value="3">赠品优惠</option>
+								<option value="4">包邮</option>
+							</select>
+							<span class="err-msg ng-hide" ng-show="couponForm.discountType.$invalid && ((couponForm.discountType.$dirty && !couponForm.discountType.$focused) || couponForm.submitted)">
+								<span ng-show="couponForm.discountType.$error.range">请选择优惠类型</span>
+							</span>
+							
+							<div id="discount-info" ng-switch on="model.discountType" class="ng-hide" ng-show="model.discountType > 0">
+								<div ng-switch-when="1">
+									<input id="cash" type="text" name="cash" hik-placeholder="请输入现金优惠金额" ng-model="model.cash" ng-focus required ng-pattern="/^[-+]?[0-9]*\.?[0-9]+$/">
+									<span class="unit">元</span>
+									<span class="err-msg ng-hide" ng-show="couponForm.cash.$invalid && ((couponForm.cash.$dirty && !couponForm.cash.$focused) || couponForm.submitted)">
+										<span ng-show="couponForm.cash.$error.required">必填项</span>
+										<span ng-show="couponForm.cash.$error.pattern">请输入正确的数量</span>
+									</span>
+								</div>
+								<div ng-switch-when="2">
+									<input id="discount" type="text" class="num" name="discount" hik-placeholder="折扣数值为1-99之间" ng-model="model.discount" ng-focus required hik-val-range="1-99">
+									<span class="unit">%</span>
+									<span class="err-msg ng-hide" ng-show="couponForm.discount.$invalid && ((couponForm.discount.$dirty && !couponForm.discount.$focused) || couponForm.submitted)">
+										<span ng-show="couponForm.discount.$error.required">必填项</span>
+										<span ng-show="couponForm.discount.$error.range">折扣数值为1-99之间</span>
+									</span>
+								</div>
+								<div ng-switch-when="3">
+									<select name="gift" ng-model="model.gift">
+										<option value="1">赠品3</option>
+									</select>
+									<div>
+										<input id="qty" type="text" class="num" name="qty" hik-placeholder="请输入赠品数量" ng-pattern="/^[1-9][0-9]*$/" ng-focus required ng-model="model.qty">
+										<span class="unit">件</span>
+										<span class="err-msg ng-hide" ng-show="couponForm.qty.$invalid && ((couponForm.qty.$dirty && !couponForm.qty.$focused) || couponForm.submitted)">
+											<span ng-show="couponForm.qty.$error.required">必填项</span>
+											<span ng-show="couponForm.qty.$error.pattern">大于0的数字</span>
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="r">
+							<strong>*</strong>
+							<label for="count" class="title">优惠数量</label>
+							<input id="count" type="text" name="count" ng-model="model.count" ng-focus required ng-pattern="/^[1-9][0-9]*$/">
+							<span class="err-msg ng-hide" ng-show="couponForm.count.$invalid && ((couponForm.count.$dirty && !couponForm.count.$focused) || couponForm.submitted)">
+								<span ng-show="couponForm.name.$error.required">必填项</span>
+								<span ng-show="couponForm.qty.$error.pattern">大于0的数字</span>
+							</span>
+						</div>
+						<div class="r">
+							<strong>*</strong>
+							<label class="title">活动状态</label>
+							<label>
+								<input type="radio" name="status" value="active" ng-model="model.status">开启</label>
+							<label>
+								<input type="radio" name="status" value="inactive" ng-model="model.status">关闭</label>
+						</div>
+						
+						<div class="submit-row">
+							<input type="submit" class="ok-btn" value="提交">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			seajs.use('business/coupon/0.0.1/coupon-add',function(app){
+				app.run(document);
+			});
+		</script>
+	</body>
+</html>

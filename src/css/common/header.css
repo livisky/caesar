@@ -1,0 +1,96 @@
+.header
+{
+	height:70px;
+	margin:0 auto;
+	font-family: "微软雅黑";
+}
+
+/*左侧logo*/
+
+.logo
+{
+	cursor:pointer;
+	height:42px;
+	line-height:42px;
+	display:inline-block;
+	margin-top:14px;
+}
+
+.logo:hover
+{
+	text-decoration:none;
+}
+
+.logo span
+{
+	position:relative;
+	bottom:-11px;
+	left:14px;
+	font-size:17px;
+	color:#797979;
+}
+
+/*用户操作栏*/
+
+.user-options
+{
+	float:right;
+	margin-top:3px;
+}
+
+.user-options a
+{
+	color:#8c8c8c;
+	font-family: "微软雅黑";
+	line-height:24px;
+	display:inline-block;
+	font-size:12px;	
+}
+
+.user-options .item
+{
+	float:left;
+	padding:0 5px;
+	border:1px solid transparent;
+	margin-left:-1px;
+	margin-right:-1px;
+	background-color:#fff;	
+}
+
+.user-options .divider
+{
+	float:left;
+	width:1px;
+	height:26px;
+	background:url("../../images/common/dividing.gif") no-repeat center center;
+}
+
+.user-options a.group
+{
+	padding-right:26px;
+	padding-left:4px;
+	background:url("../../images/common/arrow_bg.png") no-repeat right -28px;
+}
+
+.user-options .popup
+{
+	position:relative;
+	display: none;
+	z-index:1000;
+	padding-left:4px;
+}
+
+.has-option:hover a.group
+{
+	background-position:right 2px;
+}
+
+.has-option:hover .popup
+{
+	display: block;
+}
+
+.has-option:hover
+{
+	border-color:#d0d0d0;
+}

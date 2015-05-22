@@ -1,0 +1,28 @@
+.wrapper
+{
+	min-width:960px;
+	max-width:1200px;
+	margin:0 auto;
+}
+
+.hr
+{
+/*	需要改变成背景图片*/
+	border-top:1px solid #e21f8a;
+	border-bottom:1px solid #db007a;
+}
+
+.body
+{
+	padding-top:22px;
+}
+
+.sidebar
+{
+	float:left;
+}
+
+.content
+{
+	margin-left:172px;
+}

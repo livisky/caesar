@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF8">
+		<title>萤石店铺后台管理系统 - 优惠券</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<link href="css/common.css" rel="stylesheet">
+		<link href="css/marketing/marketing.css" rel="stylesheet">
+		<script src="js/lib.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="header" ng-include src="'header.html'"></div>
+			
+			<div class="hr"></div>
+			
+			<div class="body">
+				<div class="sidebar" ng-include src="'nav.html'"></div>
+				<div class="content" role="main">
+					<div ng-controller="listCouponController">
+						<h3 class="main-title">优惠券 ({{vm.page.total}})<a class="new link-btn" href="coupon.html">新建优惠券</a></h3>
+						<table class="list" role="list">
+							<thead>
+								<tr>
+									<th></th>
+									<th>活动名称</th>
+									<th>开始时间</th>
+									<th>结束时间</th>
+									<th>状态</th>
+									<th>已导出数量</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="item in vm.items|paging:vm.page.index:vm.page.size" role="listitem">
+									<td>
+										<input type="checkbox" ng-model="item.selected">
+									</td>
+									<td>{{item.name}}</td>
+									<td>{{item.start}}</td>
+									<td>{{item.end}}</td>
+									<td>{{item.status}}</td>
+									<td>{{item.number}}</td>
+									<td>
+										<a class="link-btn" href="coupon.html?id={{item.id}}">编辑</a>
+										<a class="link-btn" href="javascript:;" ng-click="deleteItem(item.id)">删除</a>
+										<a class="link-btn" href="javascript:;" ng-click="exportCoupon(item)">导出</a>
+									</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<td><input type="checkbox" ng-click="selectAll($event)"></td>
+									<td style="text-align:left"><label>全选</label><a href="javascript:;" ng-click="deleteAll()" style="padding-left:20px">删除</a></td>
+									<td colspan="5">
+										<pagination total-items="vm.page.total" ng-model="vm.page.index" max-size="5" items-per-page="vm.page.size" boundary-links="true"></pagination>
+									</td>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			seajs.use('business/coupon/0.0.1/coupon-list',function(app){
+				app.run(document);
+			});
+		</script>
+	</body>
+</html>

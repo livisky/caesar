@@ -1,0 +1,477 @@
+/*
+ * ====================================
+ * Created : 2015-05-13
+ * Updated : 2015-05-19
+ * Author : Youxiang Lu
+ * Memo   : 商家维护活动样式
+ * ====================================
+ */
+body,button, input, select, textarea, a, span, div {
+	font: 13px/1.5 Arial Normal,Arial;
+  	color: #333; 
+}
+
+a:hover, a:active,a:focus
+{
+	text-decoration:none;
+}
+
+h3
+{
+	padding:11px 0 10px 14px;
+	margin:0 0 15px 0;
+	border-bottom:1px solid #ddd;
+	font-weight:normal;
+	font-size:13px;
+}
+
+.round-btn
+{
+	border:1px solid #aaa;
+	display:inline-block;
+	padding:2px 40px;
+}
+
+/*表单样式*/
+
+label
+{
+	font-weight: normal;
+	margin-bottom:0;
+}
+
+form input[type="text"], form input[type="date"], form input[type="datetime"], form select
+{
+	display:inline-block;
+	width:252px;
+	height:25px;
+}
+
+form input
+{
+	padding:1px 0;
+	box-sizing: border-box;
+}
+
+form input[type="checkbox"]
+{
+	margin-left:0;
+}
+
+form div, .space
+{
+	margin:13px 0;
+}
+
+#excl-com
+{
+	position: relative;
+	top:3px;
+	left:36px;
+}
+
+.selected-coms, .selected-coms li
+{
+	display: inline-block;
+	margin:0;
+}
+
+.selected-coms li
+{
+	margin:0 10px 6px 0;
+	padding:3px;
+	border:1px solid #e8e8e8;
+}
+
+.selected-coms li:hover, .round-btn:hover
+{
+	border:1px solid #f60;
+}
+
+div.r
+{
+	position: relative;
+	margin-left:145px;
+}
+
+label.title
+{
+	position:absolute;
+	left:-114px;
+	top:3px;
+}
+
+form strong
+{
+	position: absolute;
+	left:-131px;
+	top:5px;
+	color:#f00;
+	font-weight: normal;
+}
+
+.rule-row
+{
+	position: relative;
+	margin-left:111px;
+}
+
+.rule-row label
+{
+	position:absolute;
+	left:-111px;
+}
+
+.rule-row select
+{
+	width:128px;
+	margin-right:18px;
+}
+
+.address-btn
+{
+	width:126px;
+	height:24px;
+	text-indent: -20000px;
+	background:url("../../images/common/add.png") no-repeat center 3px;
+}
+
+.address-btn:hover
+{
+	background-position: center -22px;
+}
+
+.mid-center
+{
+	position: absolute;
+	margin:auto;
+	left:0;
+	right:0;
+	top:0;
+	bottom:0;
+}
+
+.submit-row
+{
+	border-top:1px solid #ddd;
+	padding-top:10px;
+	text-align:right;
+}
+
+input.ok-btn
+{
+	width:150px;
+	height:40px;
+	background-color:#ff7800;
+	color:#fff;
+	font-size:18px;
+	border:1px solid #ff7800;
+	border-radius: 3px;
+}
+
+.unit
+{
+	padding-left:10px;
+}
+
+.hint
+{
+	padding-left:24px;
+	color:#bcbcbc;
+	vertical-align: middle;
+}
+
+#discount-info input
+{
+	width:214px;
+}
+
+.err-msg span
+{
+	color:#f00;
+}
+
+/*modal*/
+
+.modal-dialog
+{
+	margin:100px auto;
+}
+
+.modal-container
+{
+	padding:10px;	
+}
+
+.tabs
+{
+	position:relative;	
+}
+
+.cls-btn
+{
+	position:absolute;
+	top:0;
+	right:0;
+}
+
+.cmd-wrap
+{
+	text-align:right;
+	border-top:1px solid #e4e4e4;
+	padding-top:15px;
+	margin:0 30px 0 20px;
+}
+
+.cmd-wrap .ok-btn
+{
+	width:auto;
+	height:auto;
+	padding:3px 20px;
+	font-size:12px;
+}
+
+.cmd-wrap .ok-btn:hover
+{
+	background-color:#f15924;
+}
+
+/*modal search panel*/
+#search
+{
+	margin:0 6px 10px 6px;
+}
+
+#search form
+{
+	float:right;
+}
+
+#search select
+{
+	display:inline-block;
+	width:180px;
+	height:22px;
+	margin-right:8px;
+}
+
+#search input[type="text"]
+{
+	border:1px solid #ccc;
+	padding:2px 20px 2px 12px;
+	background:url("../../images/common/search.png") no-repeat 95% center;
+	width:180px;
+	margin-right:10px;
+}
+
+#search input[type="submit"]
+{
+	display:none;
+}
+
+/*tab control样式*/
+
+.modal-add-com, .modal-add-goods
+{
+	width:636px;
+}
+
+.tabs ul
+{
+	list-style:none;
+	padding:0 15px;
+	border-bottom:1px solid #aeaeae;
+	margin-bottom:14px;
+}
+
+.tabs li
+{
+	display:inline-block;
+	padding:6px 22px;
+	font-size:14px;
+	border-bottom:3px solid transparent;
+	cursor:pointer;
+	margin-bottom:-2px;
+}
+
+.tab-item
+{
+	padding:0 14px;
+	display:none;
+}
+
+.tabs li.selected
+{
+	border-bottom-color: #515151;
+}
+
+/*商品列表样式*/
+.items
+{
+	width:594px;
+	height:435px;
+	overflow-y: auto;
+}
+
+.items ul
+{
+	list-style:none;
+	float:left;
+}
+
+.items li
+{
+	width:180px;
+	margin:5px 6px;
+	float:left;
+	cursor:pointer;
+}
+
+.items .item
+{
+	height:180px;
+	width:180px;
+	display: table-cell;
+	text-align:center;
+	vertical-align: middle;
+	border:1px solid #e4e4e4;
+}
+
+.items .item-detail
+{
+	padding-top:6px;
+}
+
+.items .item img
+{
+	display:inline-block;
+	vertical-align: middle;
+	max-height:140px;
+	max-width:140px;
+}
+
+.items.single .item:hover, .items.single .selected .item
+{
+	border-color:#f60;
+}
+
+.items li input
+{
+	margin-right:10px;
+}
+
+.active
+{
+	display: block;
+}
+
+.items span, .items a, .items label
+{
+	line-height:21px;
+}
+
+.items a
+{
+	float:right;
+}
+
+#options
+{
+	text-align: right;
+}
+
+#options a
+{
+	padding:3px 15px;
+}
+
+/*table样式*/
+.list
+{
+	width:100%;
+}
+
+.list, .list a
+{
+	font-size:13px;
+	color:#3e3e3e;
+}
+
+.list td,.list th
+{
+	text-align:center;
+	border-bottom:1px solid #e4e4e4;
+	padding:8px 0;
+}
+
+.list th
+{
+	color:#a3a3a3;
+}
+
+.list tfoot td
+{
+	border-bottom:none;
+	padding-top:10px;	
+}
+
+.pagination{
+	float:right;
+	margin:0;
+}
+
+/*list相关页面的标题样式*/
+
+.main-title
+{
+	font-size:14px;
+	font-weight: bold;
+	background-color:#f8f8f8;
+	color:#3e3e3e;
+}
+
+.main-title a
+{
+	float:right;
+	padding-right:16px;
+}
+
+a.new
+{
+	color:#3e3e3e;
+	padding-left:17px;
+	line-height:19px;
+	display:inline-block;
+	background:url("../../images/common/add.png") no-repeat left 1px;
+}
+
+a.new:hover
+{
+	background-position: left -24px;
+}
+
+/*coupon模态框样式*/
+
+.modal-export-coupon
+{
+	width:420px;
+}
+
+.modal-export-coupon input[type="text"]
+{
+	width:290px;
+	height:25px;
+	margin-bottom:25px;
+}
+
+.modal-export-coupon .tab-contents
+{
+	text-align: center;
+	padding:30px 10px 10px;
+}
+
+/*highlight style*/
+.highlight, .selected-coms li:hover a,.link-btn:hover, .round-btn:hover
+{
+	color:#f60;
+}
