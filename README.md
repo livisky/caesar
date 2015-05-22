@@ -65,7 +65,8 @@ demo示例解决的问题：
 
 	1、绝对路径问题（fis压缩后的图片显示绝对路径）
 	
-	2、seajs+angularjs配合问题(angularjs自带代码模块化，项目部分功能可能只用jquery开发,方便统一模块化)
+	2、seajs+angularjs配合问题
+	(angularjs自带代码模块化，项目部分功能可能只用jquery开发,方便统一模块化)
 	
 	3、目录合理配置及发布问题
 	
@@ -73,4 +74,6 @@ demo示例解决的问题：
 
 
 访问：
-	http://127.0.0.1:8080/coupon-list.html?debug=true (开发&调试)http://127.0.0.1:8080/coupon-list.html (发布)
+	http://127.0.0.1:8080/coupon-list.html?debug=true (开发&调试)
+	
+	http://127.0.0.1:8080/coupon-list.html (发布)
