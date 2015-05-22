@@ -56,9 +56,9 @@ fis+angularjs+seajs
 
 目录结构：
 
-1、src下为未压缩的js、images、css文件
+	1、src下为未压缩的js、images、css文件
      	
-2、执行fis release -op 发布到当前目录后 js、images、css为压缩打包版文件
+	2、执行fis release -op 发布到当前目录后 js、images、css为压缩打包版文件
      	
 
 demo示例解决的问题：
