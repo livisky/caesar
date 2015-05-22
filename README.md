@@ -59,14 +59,17 @@ fis+angularjs+seajs
 	1、src下为未压缩的js、images、css文件
      	
 	2、执行fis release -op 发布到当前目录后 js、images、css为压缩打包版文件
-     	
+        
+        3、src/js/business/widget下的angularjs+bootstrap-ui+jquery+seajs+sea-config合并成lib.js
+        
+        4、src/css/common/下的所有css文件合并成common.css文件
 
 demo示例解决的问题：
 
 	1、绝对路径问题（fis压缩后的图片显示绝对路径）
 	
 	2、seajs+angularjs配合问题
-	(angularjs自带代码模块化，项目部分功能可能只用jquery开发,方便统一模块化)
+	   (angularjs自带代码模块化，项目部分功能可能只用jquery开发,方便统一模块化)
 	
 	3、目录合理配置及发布问题
 	
