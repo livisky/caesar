@@ -59,7 +59,7 @@ fis+angularjs+seajs
      	1、src下为未压缩的js、images、css文件
      	
      	2、执行fis release -op 发布到当前目录后 js、images、css为压缩打包版文件
-
+     	
 
 demo示例解决的问题：
 
@@ -74,6 +74,7 @@ demo示例解决的问题：
 
 
 访问：
+	
 	http://127.0.0.1:8080/coupon-list.html?debug=true (开发&调试)
 	
 	http://127.0.0.1:8080/coupon-list.html (发布)
