@@ -2,7 +2,7 @@
 fis+angularjs+seajs
 
 
-#安装：
+##安装：
 
 	npm install fis -g
 
@@ -11,7 +11,7 @@ fis+angularjs+seajs
 	npm install fis-postpackager-seajs -g
 
 
-#发布：
+发布：
 
 	1、如果是域名访问（如：http://127.0.0.1:8080）则
 	
