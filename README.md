@@ -2,7 +2,7 @@
 fis+angularjs+seajs
 
 
-安装：
+#安装：
 
 	npm install fis -g
 
@@ -11,7 +11,7 @@ fis+angularjs+seajs
 	npm install fis-postpackager-seajs -g
 
 
-发布：
+#发布：
 
 	1、如果是域名访问（如：http://127.0.0.1:8080）则
 	
@@ -54,7 +54,7 @@ fis+angularjs+seajs
 			则加载js/business/coupon/0.0.1/coupon-list.js;
 
 
-目录结构：
+#目录结构：
 
 	1、src下为未压缩的js、images、css文件
      	
@@ -64,7 +64,7 @@ fis+angularjs+seajs
         
         4、src/css/common/下的所有css文件合并成common.css文件
 
-demo示例解决的问题：
+#demo示例解决的问题：
 
 	1、绝对路径问题（fis压缩后的图片显示绝对路径）
 	
@@ -76,7 +76,7 @@ demo示例解决的问题：
 	4、开发&调试问题
 
 
-访问：
+#访问：
 	
 	http://127.0.0.1:8080/coupon-list.html?debug=true (开发&调试)
 	
